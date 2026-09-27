@@ -1,0 +1,24 @@
+{
+  "name": "@deskvoice/database",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "check": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "@deskvoice/shared": "workspace:*",
+    "drizzle-orm": "^0.39.3",
+    "postgres": "^3.4.5"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.7",
+    "drizzle-kit": "^0.30.5",
+    "typescript": "^5.8.2"
+  }
+}
