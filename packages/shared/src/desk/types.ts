@@ -2,6 +2,29 @@ export type TicketStatus = 'OPEN' | 'IN_PROGRESS' | 'WAITING_CUSTOMER' | 'RESOLV
 
 export type TicketPriority = 'LOW' | 'MEDIUM' | 'HIGH' | 'URGENT';
 
+export const TICKET_STATUS_LABELS: Record<TicketStatus, string> = {
+  OPEN: 'Aberto',
+  IN_PROGRESS: 'Em Andamento',
+  WAITING_CUSTOMER: 'Aguardando Cliente',
+  RESOLVED: 'Resolvido',
+  CLOSED: 'Fechado',
+};
+
+export const TICKET_PRIORITY_LABELS: Record<TicketPriority, string> = {
+  LOW: 'Baixa',
+  MEDIUM: 'Média',
+  HIGH: 'Alta',
+  URGENT: 'Urgente',
+};
+
+export function getTicketStatusLabel(status: TicketStatus): string {
+  return TICKET_STATUS_LABELS[status] ?? status;
+}
+
+export function getTicketPriorityLabel(priority: TicketPriority): string {
+  return TICKET_PRIORITY_LABELS[priority] ?? priority;
+}
+
 export interface Ticket {
   id: string;
   protocol: string; // Ex: DV-20260927-1042

@@ -2,6 +2,28 @@ export type AgentStatusType = 'AVAILABLE' | 'IN_CALL' | 'PAUSE_LUNCH' | 'PAUSE_T
 
 export type UserRole = 'OPERATOR' | 'SUPERVISOR' | 'ADMIN';
 
+export const AGENT_STATUS_LABELS: Record<AgentStatusType, string> = {
+  AVAILABLE: 'Disponível',
+  IN_CALL: 'Em Chamada',
+  PAUSE_LUNCH: 'Pausa Almoço',
+  PAUSE_TRAINING: 'Em Treinamento',
+  OFFLINE: 'Desconectado / Offline',
+};
+
+export const USER_ROLE_LABELS: Record<UserRole, string> = {
+  OPERATOR: 'Atendente',
+  SUPERVISOR: 'Supervisor',
+  ADMIN: 'Administrador',
+};
+
+export function getAgentStatusLabel(status: AgentStatusType): string {
+  return AGENT_STATUS_LABELS[status] ?? status;
+}
+
+export function getUserRoleLabel(role: UserRole): string {
+  return USER_ROLE_LABELS[role] ?? role;
+}
+
 export interface AgentInfo {
   id: string;
   name: string;

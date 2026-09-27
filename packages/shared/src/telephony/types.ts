@@ -21,6 +21,46 @@ export type CallEndReason =
   | 'TRANSFERRED'
   | 'NETWORK_ERROR';
 
+/**
+ * Tradução amigável em português para exibição nas interfaces
+ */
+export const CALL_STATE_LABELS: Record<CallState, { label: string; description: string }> = {
+  IDLE: { label: 'Disponível', description: 'Pronto para receber chamadas' },
+  RINGING_IN: { label: 'Chamando...', description: 'Chamada recebida tocando no ramal' },
+  RINGING_OUT: { label: 'Discando...', description: 'Chamando cliente externo' },
+  CONNECTED: { label: 'Em Conversa', description: 'Chamada conectada com áudio ativo' },
+  ON_HOLD: { label: 'Em Espera', description: 'Chamada em espera com música' },
+  TRANSFERRING: { label: 'Transferindo...', description: 'Transferência de chamada em andamento' },
+  WRAP_UP: { label: 'Pós-Atendimento', description: 'Registro de tabulação do chamado' },
+  TERMINATED: { label: 'Finalizada', description: 'Chamada encerrada' },
+};
+
+export const CALL_DIRECTION_LABELS: Record<CallDirection, string> = {
+  INBOUND: 'Recebida (Entrante)',
+  OUTBOUND: 'Realizada (Sainte)',
+};
+
+export const CALL_END_REASON_LABELS: Record<CallEndReason, string> = {
+  AGENT_HANGUP: 'Encerrada pelo Atendente',
+  REMOTE_HANGUP: 'Encerrada pelo Cliente',
+  REJECTED: 'Recusada pelo Atendente',
+  TIMEOUT_MISSED: 'Não Atendida (Perdida)',
+  TRANSFERRED: 'Transferida',
+  NETWORK_ERROR: 'Queda de Rede / Conexão',
+};
+
+export function getCallStateLabel(state: CallState): string {
+  return CALL_STATE_LABELS[state]?.label || state;
+}
+
+export function getCallDirectionLabel(direction: CallDirection): string {
+  return CALL_DIRECTION_LABELS[direction] || direction;
+}
+
+export function getCallEndReasonLabel(reason: CallEndReason): string {
+  return CALL_END_REASON_LABELS[reason] || reason;
+}
+
 export interface IncomingCallEvent {
   callId: string;
   callerNumber: string;
