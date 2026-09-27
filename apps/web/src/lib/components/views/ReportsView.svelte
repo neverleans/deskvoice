@@ -1,5 +1,6 @@
 <script lang="ts">
   import { telephony } from '../../stores/telephony.svelte.js';
+  import { getCallEndReasonLabel } from '@deskvoice/shared';
   import {
     BarChart3,
     Clock,
@@ -235,7 +236,7 @@
                     </span>
                   {:else}
                     <span class="px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20 text-[10px] font-medium">
-                      Perdida
+                      {getCallEndReasonLabel(cdr.endReason)}
                     </span>
                   {/if}
                 </td>

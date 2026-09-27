@@ -1,5 +1,6 @@
 <script lang="ts">
   import { telephony } from '../../stores/telephony.svelte.js';
+  import { getTicketPriorityLabel } from '@deskvoice/shared';
   import {
     Ticket as TicketIcon,
     Search,
@@ -96,7 +97,7 @@
                 {ticket.protocol}
               </span>
               <span class="px-2 py-0.5 rounded text-[10px] font-semibold {ticket.priority === 'HIGH' ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30' : 'bg-slate-800 text-slate-300'}">
-                Prioridade {ticket.priority}
+                Prioridade {getTicketPriorityLabel(ticket.priority)}
               </span>
               <span class="text-xs text-slate-400">•</span>
               <span class="text-xs text-slate-400">{ticket.category}</span>

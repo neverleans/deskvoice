@@ -1,5 +1,6 @@
 <script lang="ts">
   import { telephony } from '../stores/telephony.svelte.js';
+  import { getCallStateLabel } from '@deskvoice/shared';
   import { PhoneCall, Play, Headphones, Sun, Moon, Shield, UserCheck, ShieldCheck } from 'lucide-svelte';
 
   let isDark = $state(true);
@@ -56,7 +57,7 @@
     {:else}
       <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/90 border border-slate-700 text-xs">
         <span class="w-2 h-2 rounded-full {telephony.state === 'CONNECTED' ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400 animate-ping'}"></span>
-        <span class="font-mono text-slate-300">Status: <strong class="text-white">{telephony.state}</strong></span>
+        <span class="font-mono text-slate-300">Status: <strong class="text-white">{getCallStateLabel(telephony.state)}</strong></span>
         {#if telephony.state === 'CONNECTED'}
           <span class="text-emerald-400 font-mono font-bold ml-1">{telephony.formattedDuration}</span>
         {/if}
