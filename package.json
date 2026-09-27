@@ -1,0 +1,21 @@
+{
+  "name": "deskvoice",
+  "version": "0.1.0",
+  "private": true,
+  "description": "DeskVoice - Modern Desktop & Web Customer Service, Telephony & CRM Platform",
+  "author": "Lucas",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "scripts": {
+    "dev": "pnpm --filter @deskvoice/web dev",
+    "dev:desktop": "pnpm --filter @deskvoice/desktop dev",
+    "dev:api": "pnpm --filter @deskvoice/api dev",
+    "build": "pnpm -r --filter=!deskvoice run build",
+    "test": "vitest run",
+    "check": "pnpm -r --filter=!deskvoice run check",
+    "verify": "pnpm check && pnpm test"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.8"
+  }
+}
